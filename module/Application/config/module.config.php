@@ -10,6 +10,26 @@
 return array(
     'router' => array(
         'routes' => array(
+            'authenticate' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/authenticate',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'authenticate',
+                    ),
+                ),
+            ),
+            'logout' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/logout',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'logout',
+                    ),
+                ),
+            ),
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
@@ -53,12 +73,16 @@ return array(
         ),
     ),
     'service_manager' => array(
+        'aliases' => array(
+            'Zend\Authentication\AuthenticationService' => 'my_auth_service',
+            'translator' => 'MvcTranslator',
+        ),
+        'invokables' => array(
+            'my_auth_service' => 'Zend\Authentication\AuthenticationService',
+        ),
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
-        ),
-        'aliases' => array(
-            'translator' => 'MvcTranslator',
         ),
     ),
     'translator' => array(
@@ -73,7 +97,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\OAuth2' => 'Application\Controller\OAuthController',
         ),
     ),
     'view_manager' => array(
