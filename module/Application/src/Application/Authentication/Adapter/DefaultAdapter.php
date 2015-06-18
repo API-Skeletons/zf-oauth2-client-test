@@ -37,7 +37,7 @@ class DefaultAdapter implements AdapterInterface
 
         $client = $this->getOAuth2Service()->getHttpBearerClient($this->profile);
 
-        $client->setUri('http://localhost:8081/api/me');
+        $client->setUri('http://localhost:8080/api/me');
         $client->setMethod('GET');
         $headers = $client->getRequest()->getHeaders();
         $headers->addHeaderLine('Accept: application/json');

@@ -11,5 +11,7 @@
  * credentials from accidentally being committed into version control.
  */
 
+date_default_timezone_set('America/Los_Angeles');
+
 return array(
 );
