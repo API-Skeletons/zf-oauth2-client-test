@@ -7,7 +7,7 @@ return array(
                 'login_redirect_route' => 'authenticate',
                 'client_id' => 'clienttest',
                 'secret' => 'password',
-                'endpoint' => 'http://localhost:8080/oauth', # The zf-oauth2 server
+                'endpoint' => 'https://local.sso.social.oauth2.user/oauth', # The zf-oauth2 server
                 'scope' => '',
             ),
         ),

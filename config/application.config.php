@@ -2,8 +2,8 @@
 
 return array(
     'modules' => array(
-        'Application',
         'ZF\OAuth2\Client',
+        'Application',
     ),
 
     'module_listener_options' => array(

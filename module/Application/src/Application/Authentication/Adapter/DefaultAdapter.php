@@ -2,20 +2,29 @@
 
 namespace Application\Authentication\Adapter;
 
-use DoctrineModule\Persistence\ProvidesObjectManager;
 use Zend\Authentication\Adapter\AdapterInterface;
-use Application\Service\MeetupClient;
 use Zend\Authentication\Result;
 use ZF\OAuth2\Client\Service\OAuth2Service;
 use Zend\Json\Json;
-use Db\Entity;
 
-class DefaultAdapter implements AdapterInterface
+class DefaultAdapter implements
+    AdapterInterface
 {
-#    use ProvidesObjectManager;
-
     protected $oAuth2Service;
+    protected $userInfoUrl;
     protected $profile = 'default';
+
+    public function getUserInfoUrl()
+    {
+        return $this->userInfoUrl;
+    }
+
+    public function setUserInfoUrl($url)
+    {
+        $this->userInfoUrl = $url;
+
+        return $this;
+    }
 
     public function getOAuth2Service()
     {
@@ -37,7 +46,7 @@ class DefaultAdapter implements AdapterInterface
 
         $client = $this->getOAuth2Service()->getHttpBearerClient($this->profile);
 
-        $client->setUri('http://localhost:8080/api/me');
+        $client->setUri('https://local.sso.social.oauth2.user/api/me');
         $client->setMethod('GET');
         $headers = $client->getRequest()->getHeaders();
         $headers->addHeaderLine('Accept: application/json');

@@ -14,5 +14,4 @@
 session_name('zf_oauth2_client_test');
 
 return array(
-    // ...
 );

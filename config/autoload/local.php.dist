@@ -14,4 +14,7 @@
 date_default_timezone_set('America/Los_Angeles');
 
 return array(
+    'zf-oauth2-client-test' array(
+        'user_info_url' => 'https://local.sso.social.oauth2.user/api/me',
+    ),
 );

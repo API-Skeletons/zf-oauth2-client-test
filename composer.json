@@ -1,5 +1,5 @@
 {
-    "name": "apigility-skeletons/zf-oauth2-client-test",
+    "name": "api-skeletons/zf-oauth2-client-test",
     "description": "Skeleton Application for zf-oauth2-client",
     "license": "BSD-3-Clause",
     "keywords": [
@@ -9,9 +9,9 @@
     "minimum-stability": "dev",
     "homepage": "http://framework.zend.com/",
     "require": {
-        "php": ">=5.3.3",
-        "zendframework/zendframework": "~2.4",
-        "zfcampus/zf-oauth2-client": "dev-master",
-        "bshaffer/oauth2-server-php": "dev-master"
+        "php": ">=5.5",
+        "zendframework/zendframework": "~2.5",
+        "api-skeletons/zf-oauth2-client": "~1.0",
+        "bshaffer/oauth2-server-php": "~1.8"
     }
 }

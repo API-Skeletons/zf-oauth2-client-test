@@ -12,7 +12,6 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Authentication\AuthenticationService;
-use Application\Authentication\Adapter\DefaultAdapter;
 
 class IndexController extends AbstractActionController
 {
@@ -33,11 +32,7 @@ class IndexController extends AbstractActionController
      */
     public function authenticateAction()
     {
-        $oAuth2Service = $this->getServiceLocator()->get('ZF\OAuth2\Client\Service\OAuth2Service');
-        $oAuth2Config = $oAuth2Service->getConfig();
-
-        $adapter = new DefaultAdapter();
-        $adapter->setOAuth2Service($oAuth2Service);
+        $adapter = $this->getServiceLocator()->get('Application\Authentication\Adapter\DefaultAdapter');
 
         $auth = new AuthenticationService();
         $result = $auth->authenticate($adapter);
